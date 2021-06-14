@@ -4,7 +4,112 @@
 <!-- <app-favorite [isFavorite] = "post.isFavorite"></app-favorite > -->
 
 <!-- setting alias -->
+<!-- <h1>Hello World</h1>-->
+<!-- <app-favorite [is-favorite] = "post.isFavorite" (change) = "onFavoriteChanged($event)"></app-favorite >  -->
 
-<app-favorite [is-favorite] = "post.isFavorite" (change) = "onFavoriteChanged()"></app-favorite >
+<app-panel>
+    <ng-container class="heading">Heading</ng-container>
+    <ng-container class="body">
+        <h2>Body</h2>
+        <p>Some Content here</p>
+    </ng-container>
+</app-panel>
 
-<!--  -->
+<!-- ngIf directive -->
+<!-- <div *ngIf = "courses.length > 0">
+    List of courses
+</div>
+
+<div *ngIf = "courses.length == 0">
+    No Courses Yet
+</div> -->
+
+<!-- If else syntax -->
+<!-- <div *ngIf = "courses.length > 0; else noCourses">
+    List of courses
+</div>
+<ng-template #noCourses>
+    No Courses Yet
+</ng-template> -->
+
+<!--another If else syntax -->
+<!-- <div *ngIf = "courses.length > 0; then coursesList else noCourses"></div>
+    <ng-template #coursesList>List of courses</ng-template>
+
+<ng-template #noCourses>
+    No Courses Yet
+</ng-template> -->
+
+<!-- hidden property -->
+<!-- <div [hidden]="courses.length == 0">
+    List of courses
+</div>
+
+<div [hidden]="courses.length > 0">
+    No Courses Yet
+</div> -->
+
+<!-- ngSwitch case -->
+<!-- <ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link" [class.active] = "viewMode == 'map'" data-toggle="pill" (click)="viewMode == 'map'">Map View</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [class.active] = "viewMode == 'list'"  data-toggle="pill" (click)="viewMode == 'list'">List view</a>
+    </li>
+</ul> -->
+<!-- render div dynamically based on View Mode Property -->
+<!-- <div [ngSwitch] = "viewMode"> -->
+    <!-- if value of viewMode is map -->
+    <!-- <div *ngSwitchCase = "'map'">Map View Content</div> -->
+    <!-- if value of viewMode is list -->
+    <!-- <div *ngSwitchCase = "'list'">List View Content</div> -->
+    <!-- switch default case -->
+    <!-- <div *ngSwitchDefault>Otherwise</div> -->
+<!-- </div> -->
+
+<!-- ngFor -->
+<button (click) = "loadCourses()">Load Courses</button>
+<!-- <button (click) = "onAdd()">Add</button> -->
+<ul>
+    <!-- <li *ngFor="let course of courses; even as isEven">
+      {{i}} - {{course.name}} -->
+      <!-- <button (click) = "onRemove(course)">Remove</button> -->
+      <!-- <button (click) = "onChange(course)">Update</button> -->
+
+      <!-- <span *ngIf = "isEven">(EVEN) </span>
+    </li> -->
+
+    <li *ngFor="let course of courses; trackBy: trackCourse">
+        {{course.name}}
+    </li>
+</ul>
+
+<!-- <button [style.backgroundColor] = "canSave ? 'blue' : 'gray'"
+[style.color] = "canSave ? 'white' : 'black'" [style.fontWeight] = "canSave ? 'bold' : 'normal'" >
+
+    Save
+</button> -->
+<!-- ngStyle -->
+<!-- <button [ngStyle] =  "{
+    'backgroundColor': canSave ? 'blue' : 'gray',
+    'color': canSave ? 'white' : 'black',
+    'fontWeight': canSave ? 'bold' : 'normal'
+}" >
+
+    Save
+
+    
+</button> -->
+
+<!-- safe traversal operator -->
+<span> {{task.assignee?.name}} </span>
+
+<!-- custom directive -->
+<!--with appInputElement angular apply custom directive to  input -->
+<!-- <input type="text" appInputFormat [format] = "'uppercase'"> -->
+<!-- Alternative Syntax -->
+<input type="text" [appInputFormat] = "'uppercase'"  >
+
+<!-- creating bootstrap form -->
+<app-contact-form></app-contact-form>

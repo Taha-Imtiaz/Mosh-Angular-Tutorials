@@ -1,1 +1,7 @@
-<i class="fa" [class.fa-star]="isFavorite" [class.fa-star-o]="!isFavorite" (click)="onClick()" aria-hidden="true"></i>
+<!-- <i class="fa" [class.fa-star]="isFavorite" [class.fa-star-o]="!isFavorite" (click)="onClick()" aria-hidden="true"></i> -->
+
+<!-- another way to apply class -->
+<i class="fa" [ngClass]="{
+    'fa-star' : isFavorite,
+    'fa-star-o': !isFavorite
+}" (click)="onClick()" aria-hidden="true"></i>
