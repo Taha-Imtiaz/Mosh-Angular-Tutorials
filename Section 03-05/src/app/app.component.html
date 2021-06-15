@@ -7,13 +7,13 @@
 <!-- <h1>Hello World</h1>-->
 <!-- <app-favorite [is-favorite] = "post.isFavorite" (change) = "onFavoriteChanged($event)"></app-favorite >  -->
 
-<app-panel>
+<!-- <app-panel>
     <ng-container class="heading">Heading</ng-container>
     <ng-container class="body">
         <h2>Body</h2>
         <p>Some Content here</p>
     </ng-container>
-</app-panel>
+</app-panel> -->
 
 <!-- ngIf directive -->
 <!-- <div *ngIf = "courses.length > 0">
@@ -69,9 +69,9 @@
 <!-- </div> -->
 
 <!-- ngFor -->
-<button (click) = "loadCourses()">Load Courses</button>
+<!-- <button (click) = "loadCourses()">Load Courses</button> -->
 <!-- <button (click) = "onAdd()">Add</button> -->
-<ul>
+<!-- <ul> -->
     <!-- <li *ngFor="let course of courses; even as isEven">
       {{i}} - {{course.name}} -->
       <!-- <button (click) = "onRemove(course)">Remove</button> -->
@@ -80,10 +80,10 @@
       <!-- <span *ngIf = "isEven">(EVEN) </span>
     </li> -->
 
-    <li *ngFor="let course of courses; trackBy: trackCourse">
+    <!-- <li *ngFor="let course of courses; trackBy: trackCourse">
         {{course.name}}
     </li>
-</ul>
+</ul> -->
 
 <!-- <button [style.backgroundColor] = "canSave ? 'blue' : 'gray'"
 [style.color] = "canSave ? 'white' : 'black'" [style.fontWeight] = "canSave ? 'bold' : 'normal'" >
@@ -103,13 +103,15 @@
 </button> -->
 
 <!-- safe traversal operator -->
-<span> {{task.assignee?.name}} </span>
+<!-- <span> {{task.assignee?.name}} </span> -->
 
 <!-- custom directive -->
 <!--with appInputElement angular apply custom directive to  input -->
 <!-- <input type="text" appInputFormat [format] = "'uppercase'"> -->
 <!-- Alternative Syntax -->
-<input type="text" [appInputFormat] = "'uppercase'"  >
+<!-- <input type="text" [appInputFormat] = "'uppercase'"  > -->
 
 <!-- creating bootstrap form -->
-<app-contact-form></app-contact-form>
+<!-- <app-contact-form></app-contact-form> -->
+<!-- <signup-form></signup-form> -->
+<!-- <app-new-course-form></app-new-course-form> -->
