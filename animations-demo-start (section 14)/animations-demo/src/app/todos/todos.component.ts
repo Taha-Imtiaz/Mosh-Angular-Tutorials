@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { fade } from 'app/animations';
+import { fade, slide } from 'app/animations';
 
 @Component({
   selector: 'todos',
@@ -34,7 +34,9 @@ import { fade } from 'app/animations';
   // ]
 
   //Cleaner syntax
-  animations:  [fade]
+  // animations:  [fade]
+  animations:  [slide]
+
 })
 export class TodosComponent {
   items: any[] = [
