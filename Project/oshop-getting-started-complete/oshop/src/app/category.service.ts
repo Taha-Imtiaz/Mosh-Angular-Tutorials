@@ -7,7 +7,7 @@ export class CategoryService  {
   constructor(private db: AngularFireDatabase) { }
 
   // get categories from firebase database
-  getCategories() {
+  getAll() {
     return this.db.list("/categories", {
       // sort all the categories in alphabatical order
       query:{

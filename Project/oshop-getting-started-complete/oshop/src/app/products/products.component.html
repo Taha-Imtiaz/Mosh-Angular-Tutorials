@@ -1,16 +1,17 @@
 <div class="row">
-  <ng-container *ngFor="let product of products$ | async; let i = index">
-    <div class="col">
-      <div class="card" style="width: 15rem;">
-        <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{product.title}}</h5>
-          <p class="card-text">{{product.price | currency:'USD': true}}</p>
-          <a href="#" class="btn btn-primary">Add to Cart</a>
+  <div class="col-3">
+  <product-filter [category] = "category"></product-filter>
+  </div>
+  <div class="col">
+    <div class="row">
+      <ng-container *ngFor="let p of filteredProducts; let i = index">
+        <div class="col">
+         <product-card [product] = "p" [shopping-cart] = "cart"></product-card>
         </div>
-      </div>
+        <div *ngIf="(i+1) %2 === 0" class="w-100"></div>
+      </ng-container>
+    
     </div>
-    <div *ngIf="(i+1) %2 === 0" class="w-100"></div>
-  </ng-container>
-
+  </div>
 </div>
+
