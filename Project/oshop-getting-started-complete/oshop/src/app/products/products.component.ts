@@ -5,55 +5,54 @@ import { ProductService } from '../product.service';
 import 'rxjs/add/operator/switchMap'
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   products: Product[] = []
   filteredProducts: Product[] = []
   category: string
-  cart: any
-  subscription:Subscription
+  cart$: Observable<ShoppingCart>
+  // subscription:Subscription
 
   constructor(
-    route: ActivatedRoute, // to get quey params
-    productService: ProductService,
-   private shoppingCartService:ShoppingCartService
+    private route: ActivatedRoute, // to get quey params
+    private productService: ProductService,
+    private shoppingCartService: ShoppingCartService) { }
 
-  ) {
-   
-
-    // get all products from firebase
-    productService
-    .getAll().switchMap((products: any) => {
-      this.products = products;
-     return route.queryParamMap;
-     })
-      .subscribe((params) => {
-        //read query params from routerLink
-        this.category = params.get("category")   
-  
-        this.filteredProducts = (this.category) ? this.products.filter((product) =>
-          product.category === this.category) : this.products
-      })
-   
-
-   
+  async ngOnInit() {
+    this.cart$ = await this.shoppingCartService.getCart()   
+    this.populateProducts()
   }
 
-async ngOnInit() {
-let cart = await this.shoppingCartService.getCart()
-// subscribe to observable
-this.subscription = cart.subscribe((cart) => this.cart = cart)
-}
+  private populateProducts() {
+     // get all products from firebase
+     this.productService
+     .getAll().switchMap((products: any) => {
+       this.products = products;
+       return this.route.queryParamMap;
+     })
+     .subscribe((params) => {
+       //read query params from routerLink and then filtered products
+       this.category = params.get("category")
+       this.applyFilter()
 
-// onDestroyInterface runs when component removes from DOM
-ngOnDestroy() {
-// unsubscribe() from subscription
-this.subscription.unsubscribe()
-}
+
+     })
+  }
+  private applyFilter() {
+    this.filteredProducts = (this.category) ? this.products.filter((product) =>
+      product.category === this.category) : this.products
+  }
+  // onDestroyInterface runs when component removes from DOM
+  // ngOnDestroy() {
+  // // unsubscribe() from subscription
+  // this.subscription.unsubscribe()
+  // }
 
 }

@@ -10,7 +10,30 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ShoppingCartService {
 
+
   constructor(private db: AngularFireDatabase) { }
+  async getCart(): Promise<Observable<ShoppingCart>> {
+    //  read id of the document
+    let cartId = await this.getOrCreateCartId()
+
+    // reading a cart from firebase
+    return this.db.object(`/shopping-carts/${cartId}`).map((x: any) => new ShoppingCart(x.items))
+
+  }
+
+  async addToCart(product: Product) {
+    this.updateItem(product, 1)
+  }
+
+  async removeFromCart(product: Product) {
+    this.updateItem(product, -1)
+  }
+
+  async clearCart() {
+    let cartId = await this.getOrCreateCartId()
+    // remove all items from cart
+    this.db.object(`/shopping-carts/${cartId}/items`).remove()
+  }
 
   private create() {
     // create shopping-cart
@@ -25,14 +48,7 @@ export class ShoppingCartService {
     return this.db.object(`/shopping-carts/${cartId}/items/${productId}`)
   }
 
-  async getCart() : Promise<Observable<ShoppingCart>>  {
-    //  read id of the document
-    let cartId = await this.getOrCreateCartId()
 
-    // reading a cart from firebase
-    return this.db.object(`/shopping-carts/${cartId}`).map((x : any) => new ShoppingCart(x.items))
-
-  }
 
   // get orCreate cart
   private async getOrCreateCartId(): Promise<string> {
@@ -55,14 +71,8 @@ export class ShoppingCartService {
     }
   }
 
-  async addToCart(product: Product) {
-    this.updateItemQuantity(product, 1)
-  }
 
-  async removeFromCart(product: Product) {
-   this.updateItemQuantity(product, -1)
-  }
-  private async updateItemQuantity(product: Product, change: number) {
+  private async updateItem(product: Product, change: number) {
     // get shopping cart refrence
     let cartId = await this.getOrCreateCartId()
 
@@ -73,9 +83,23 @@ export class ShoppingCartService {
       //   // if item already exists
       //   item$.update({ product:product, quantity: item.quantity + 1 })
       // }
+      let quantity = (item.quantity || 0) + change
 
-      // add item 
-      item$.update({ product: product, quantity: (item.quantity || 0) + change })
+      if (quantity === 0) {
+        // remove all cart items
+        item$.remove()
+      }
+      else {
+        // add item 
+        item$.update({
+          //  product: product,
+          title: product.title,
+          imageUrl: product.imageUrl,
+          price: product.price,
+          quantity: quantity
+        })
+      }
+
 
     })
   }
