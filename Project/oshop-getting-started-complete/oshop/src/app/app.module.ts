@@ -38,6 +38,9 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductCardComponent } from './product-card/product-card.component'
 import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { OrderService } from './order.service';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ProductFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
+    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +92,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
 
       },  //checkout(when user place shipping details)
       {
-        path: 'order-success', component: OrderSuccessComponent,
+        path: 'order-success/:id', component: OrderSuccessComponent,
         // canActivate property for protecting routes
         canActivate: [AuthGuard]
       }, //order success
@@ -138,7 +143,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
      // register product service
      ProductService,
     //  shoppingCartService
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

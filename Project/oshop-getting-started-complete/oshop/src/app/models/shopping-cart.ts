@@ -8,7 +8,7 @@ export class ShoppingCart {
         this.itemsMap = itemsMap || {}
         for (let productId in itemsMap) {
             let item = itemsMap[productId]
-            console.log(itemsMap[productId]);
+            console.log(itemsMap[productId],productId);
 
             this.items.push(new ShoppingCartItem({
                 ...item,
