@@ -1,3 +1,136 @@
-<mat-checkbox>
-  Subscribe to newsletter
+<!-- checkbox -->
+
+<!-- <mat-checkbox
+#showDetails
+value =""
+[checked] = "isChecked"
+(change) = "onChange($event)"
+>
+  Show Details
 </mat-checkbox>
+
+<div *ngIf = "showDetails.checked">
+  Some Details...
+</div> -->
+
+<!-- radio button -->
+<!-- 
+<mat-radio-group aria-label="Select an option" value = "0">
+  <mat-radio-button value="1">Male</mat-radio-button>
+  <mat-radio-button value="0" >Female</mat-radio-button>
+</mat-radio-group> -->
+
+<!-- selects in material ui -->
+<!-- <mat-form-field >
+<mat-select [(ngModel)] = "color">
+  <mat-option 
+ *ngFor = "let color of colors"
+  [value]="color.id"
+  >
+  {{color.name}}
+</mat-option>
+</mat-select>
+</mat-form-field> -->
+
+<!-- inputs -->
+<!-- <mat-form-field class="example-full-width" >
+  <input
+  ngModel
+  name="username"
+  #username = "ngModel"
+  matInput type="text" placeholder="Username" required>
+  <mat-hint>
+    Type a unique username
+  </mat-hint>
+  <span matSuffix>@domain.com</span>
+  <span matPrefix>admin.</span>
+<mat-error *ngIf = "username.invalid && username.errors.required">
+  The username field is required
+</mat-error>
+</mat-form-field> -->
+
+<!-- text area -->
+<!-- <mat-form-field class="example-full-width">
+<textarea matTextareaAutosize matInput rows="2"></textarea>
+</mat-form-field> -->
+
+<!-- date picker -->
+<!-- <mat-form-field  >
+  <input  matInput [matDatepicker]="birthdate"
+[min] = "minDate"
+[max] = "maxDate"  
+(focus) = "birthdate.open()"
+  >
+  <mat-datepicker-toggle matSuffix [for]="birthdate"></mat-datepicker-toggle>
+  <mat-datepicker #birthdate touchUi = "true"></mat-datepicker>
+  </mat-form-field> -->
+
+<!-- icons -->
+<!-- <mat-icon>
+    add_alert
+  </mat-icon> -->
+
+<!-- button -->
+<!-- <button mat-button> Button 1</button>
+  <button color = "primary" mat-raised-button> Primary</button>
+  <button color = "accent" mat-raised-button> Accent</button>
+  <button color = "warn" mat-raised-button> Warn</button>
+  <button mat-fab color = "primary"> 
+    <mat-icon>check</mat-icon>
+  </button> -->
+
+<!-- chips -->
+<!-- <mat-chip-list>
+    <mat-chip
+    *ngFor = "let category of categories"
+    (click) = "selectCategory(category)"
+    [selected] = "category.selected"
+    >
+    {{category.name}}
+
+    </mat-chip>
+   
+  </mat-chip-list> -->
+
+<!-- progress spinner -->
+<!-- <mat-progress-spinner mode = "indeterminate"
+ *ngIf = "isLoading"
+ >
+
+</mat-progress-spinner> -->
+
+<!-- tooltip -->
+<!-- <span matTooltip = "Here is my tooltip" matTooltipPosition="right">
+  Some Text
+</span> -->
+
+<!-- tabs -->
+<!-- <mat-tab-group>
+  <mat-tab label="Billing">
+    Content of the billing tab
+  </mat-tab>
+  <mat-tab label="Shipping">
+    Content of the shipping tab
+
+  </mat-tab>
+</mat-tab-group> -->
+
+<!-- dialogs -->
+<!-- <button mat-raised-button (click) = "openDialog()">
+Open Dialog
+</button> -->
+
+<!-- <h1>Heading 1</h1>
+<h2>Heading 2</h2> -->
+<!-- 
+<button color = "primary" mat-raised-button>Button 1</button>
+<button color = "accent" mat-raised-button>Button 2</button> -->
+
+<!-- typography -->
+<h1>Heading 1</h1>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat aspernatur quaerat enim dolorum, omnis fuga! Facere quidem dolores ad ea culpa recusandae. Fugit rem eos molestiae consequuntur eius dicta ducimus?
+At optio dolore hic minus illum possimus, iure ab libero deserunt velit soluta porro saepe, natus error? Vitae, quisquam, voluptatum sint aliquam veritatis totam officiis ipsa accusantium reprehenderit, alias impedit.
+Saepe, tempore aperiam. Ducimus nisi magnam nemo, dolores qui quod, dolorum vitae quam in hic minima a cupiditate molestias quas? Ratione dolorum laboriosam veniam necessitatibus? Vero, nobis dolores? Ipsa, explicabo.
+Nihil sunt vitae asperiores ab pariatur nostrum dolores? Nesciunt, sint corporis. Facilis deleniti doloremque, officia consequatur, ad pariatur iusto provident sunt ipsa minima cum, incidunt harum! Aspernatur tenetur rerum asperiores!
+Dolores cumque laboriosam, alias aperiam eius accusantium ea autem optio non aspernatur molestias quis aliquam obcaecati ut quam. Totam assumenda asperiores tempora at aliquam corporis adipisci ipsum esse accusantium illum!</p>
+
